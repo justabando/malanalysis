@@ -1,26 +1,18 @@
 #### Preamble ####
-# Purpose: Downloads and saves the data from [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Data: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
-# License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
-
+# Purpose: Downloads and saves the data from Kaggle
+# Author: Justin Abando
+# Date: 5 April 2023
+# Contact: justin.abando@mail.utoronto.ca
+# Pre-requisites: Retrieved from Kaggle
 
 #### Workspace setup ####
-library(opendatatoronto)
 library(tidyverse)
-# [...UPDATE THIS...]
+
 
 #### Download data ####
-# [...ADD CODE HERE TO DOWNLOAD...]
-
-
+setwd("/cloud/project/inputs/data")
+anime <- read_csv("anime.csv")
 
 #### Save data ####
 # [...UPDATE THIS...]
-# change the_raw_data to whatever name you assigned when you downloaded it.
-write_csv(the_raw_data, "inputs/data/raw_data.csv") 
-
-         
+write_csv(anime_list, "inputs/data/anime.csv") 

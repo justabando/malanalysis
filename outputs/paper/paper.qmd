@@ -1,13 +1,11 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: The multifaceted nature that determine an anime show's popularity involves (findings of the paper, WIP).
 author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: LINK."
+  - Justin Abando
+thanks: "Code and data are available at: https://github.com/justabando/malanalysis."
 date: "`r Sys.time()`"
 date-format: "D MMMM YYYY"
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "There are online lists and forums where users can vote on what they believe to be the most popular anime such as MyAnimeList (MAL). However, there are no metrics to determine why specific anime stand out, with some shows being rated lower in terms of quality, yet have more popularity based on MAL user responses. Data was retrieved to determine what factors could be responsible for a show's popularity. It was found that (results of analysis, WIP). The findings of this paper suggests reasons why a particular anime becomes popular, which can be relevant to those that are new to watching anime or those that want something new to watch as they would gravitate to shows that receive traction by a broader demographic."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -18,38 +16,46 @@ bibliography: references.bib
 #| warning: false
 #| message: false
 
+knitr::opts_chunk$set(echo = TRUE)
+
+###Workplace setup###
+
 library(tidyverse)
-library(palmerpenguins)
+library(dplyr)
+library(janitor)
+library(ggplot2)
+
+
 ```
 
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. For instance, @sec-data and @sec-first-point. 
+  Japanese animation (referred hereafter as anime) is a medium that has been exploding in popularity in recent decades. With an already large catalogue of shows to choose from, many newcomers to the medium seek guidance in what shows they should start watching as their entry to anime. One such website that helps with this is MyAnimeList (MAL), which serves as both a social networking platform for anime fans, but also as a social cataloguing website to keep track, rank, and review the shows that you can watch. MAL is one of the most frequently used anime catalogues online, with millions of active users and website visits every month. 
 
+  With a large user base, MAL members can personally rate and review the shows that they watch and catalogue them in their anime lists. While this is useful at the individual level to keep track of their own journey and see the depth and breadth of the shows they watch, it is also useful at the community level. The rating and reviews that are given from individuals are aggregated and averaged using all of the data from other MAL users to give an overall subjective ranking of each show in terms of popularity and rating. It should be noted that a show's ranking is not defined by objective means, but is the majority voice of all the subjective reviews left by the users of the website. With MAL, popularity and rating are both metrics used to sort and determine the top anime based on the reviews and ratings that were given to them by users. While the rating of the show matters for popularity to an extent, a large part of it's score is dependent on the content of the show itself. The rating is dependent on a scale of 1-10, and takes the average score of all the users that have rated the show. Meanwhile, popularity as a ranking metric demonstrates how much exposure the show has gotten and its outreach across as many demographics as possible, and is a ranking that is determined by the amount of users that rated the show regardless if it was positive or not.
 
+  This presents two ways for newcomers to judge a show before watching. They can be inclined to start a show that is subjectively rated as one of the best as ranked by the MAL community, or choose one that has gained the most traction despite any apparent flaws or drawbacks that may deter a positive watching experience. As such, it should be noted that popularity is not a metric that is inherently positive, but can also imply the notorious status of a show, especially if it is ranked low in terms of rating but manages to be much more popular than its rating score suggests. This creates an interesting method to identify shows that have managed to be popular despite its poor ranking performance. It could be that the show has notoriously bad traits that often gets shared to others to ridicule or prank unsuspecting friends to watch and experience a show that can be "so bad that its good". The anime may have been able to maintain a good quality throughout its run time, but eventually hit a point in the plot that polarizes the show's watchers. Regardless, there are many ways to interpret the collective opinion of a show on MAL with the presence of ranking both its ratings and popularity. While the rating of a show is indicative of how well-received the show is strictly by the subject and content of the show itself, the popularity of a show can be shrouded in mystery and depend on many logistical factors the put an anime in the limelight. 
+
+  With all of this in mind, the objective of this analysis is to determine the factors that influence an anime's popularity. How an anime becomes well-known and circulated through the community and even seeps through the cracks and becomes mainstream is an interesting topic to discuss due to the many facets of the show in terms of its production, marketing, and teams that work on them. To determine these exact causes, a statistical analysis is required to contextualize the exact factors that are relevant in determining an anime's popularity. These factors will be expanded upon in @sec-data. 
+
+  It was found that (the results of paper, WIP).
+
+  The findings of this paper suggest that the popularity of a show is influenced by a variety of factors that may not be obvious by just watching the show itself. These findings can help someone who is new to watching anime, or those that want something new to watch to find something that gained traction within the community. Popularity can be a factor that is more important than the ranking of the show's quality in many cases, and this is due to the context that the show presents. An anime may be very well-received, but it may be less known within the broader community due to subject matter that may be difficult to process, whether it would be highly philosophical, graphic, or leans in any other kind of extreme direction that may lose the interest of a casual viewer. With less overall viewership of an anime, the show may still be ranked relatively high in terms of rating due to its niche community that watches the show, which can inflate its overall ranking in its ratings. This is why ratings are not necessarily the best metric to depend on for newcomers to find a show to watch, as a niche show may not be widely accessible to a broad audience. However, popularity ranking can be much more indicative of a potential show someone can watch due to its exposure that is not dependent on the taste or bias of the viewer. As such, the (factors that influence popularity that will be discussed on, WIP).
+
+  This statistical analysis is divided into several sections, with @sec-data giving context and describing the variables that will be used to determine the underlying reason behind an anime's popularity. @sec-model describes the model used to create the correlation between a show's popularity and the factors that possibly influence it. @sec-results demonstrate the overall findings of the statistical analysis and puts into perspective how these factors affect a show's popularity, and @sec-discussion covers a discussion of the observations that were made and inferring the causes based on the results of the data. 
 
 # Data {#sec-data}
 
-Our data is of penguins (@fig-bills).
 
 ```{r}
 #| label: fig-bills
 #| fig-cap: Bills of penguins
 #| echo: false
 
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
+
 ```
 
-Talk more about it.
-
-Also bills and their average (@fig-billssssss). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work.)
 
 ```{r}
 #| label: fig-billssssss
@@ -58,47 +64,23 @@ Also bills and their average (@fig-billssssss). (You can change the height and w
 #| fig-width: 8
 #| fig-height: 4
 
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
 ```
 
-Talk way more about it. 
 
+# Model {#sec-model}
 
+# Results {#sec-results}
 
-# Model
-
-$$
-Pr(\theta | y) = \frac{Pr(y | \theta) Pr(\theta)}{Pr(y)}
-$$ {#eq-bayes}
-
-@eq-bayes seems useful, eh?
-
-Here's a dumb example of how to use some references: In paper we run our analysis in `R` [@citeR]. We also use the `tidyverse` which was written by @thereferencecanbewhatever If we were interested in baseball data then @citeLahman could be useful. 
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
-
-
-# Results
-
-# Discussion
+# Discussion {#sec-discussion}
 
 ## First discussion point {#sec-first-point}
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
+## Second discussion point {#sec-second-point}
 
-## Second discussion point
+## Third discussion point {#sec-third-point}
 
-## Third discussion point
+## Limitations and next steps {#sec-limitations}
 
-## Weaknesses and next steps
-
-Weaknesses and next steps should also be included.
 
 \newpage
 
