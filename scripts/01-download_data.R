@@ -3,7 +3,7 @@
 # Author: Justin Abando
 # Date: 5 April 2023
 # Contact: justin.abando@mail.utoronto.ca
-# Pre-requisites: Retrieved from Kaggle
+# Pre-requisites: Version 7 of MyAnimeList Anime and Manga Datasets, retrieved from Kaggle @ https://www.kaggle.com/datasets/andreuvallhernndez/myanimelist
 
 #### Workspace setup ####
 library(tidyverse)
@@ -14,5 +14,4 @@ setwd("/cloud/project/inputs/data")
 anime <- read_csv("anime.csv")
 
 #### Save data ####
-# [...UPDATE THIS...]
 write_csv(anime_list, "inputs/data/anime.csv") 
