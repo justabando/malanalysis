@@ -16,7 +16,7 @@ bibliography: references.bib
 #| warning: false
 #| message: false
 
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 
 ###Workplace setup###
 
@@ -25,6 +25,12 @@ library(dplyr)
 library(janitor)
 library(ggplot2)
 library(knitr)
+library(kableExtra)
+
+cleanedanime1 <- read_csv("../../outputs/data/cleaned_anime1.csv")
+cleanedanime2 <- read_csv("../../outputs/data/cleaned_anime2.csv")
+animeusersummary <- read_csv("../../outputs/data/anime_user_summary.csv")
+animeinformationsummary <- read_csv("../../outputs/data/anime_information_summary.csv")
 
 ```
 
@@ -35,13 +41,13 @@ library(knitr)
 
   With a large user base, MAL members can personally rate and review the shows that they watch and catalogue them in their anime lists. While this is useful at the individual level to keep track of their own journey and see the depth and breadth of the shows they watch, it is also useful at the community level. The rating and reviews that are given from individuals are aggregated and averaged using all of the data from other MAL users to give an overall subjective ranking of each show in terms of popularity and rating. It should be noted that a show's ranking is not defined by objective means, but is the majority voice of all the subjective reviews left by the users of the website. With MAL, popularity and rating are both metrics used to sort and determine the top anime based on the reviews and ratings that were given to them by users. While the rating of the show matters for popularity to an extent, a large part of it's score is dependent on the content of the show itself. The rating is dependent on a scale of 1-10, and takes the average score of all the users that have rated the show. Meanwhile, popularity as a ranking metric demonstrates how much exposure the show has gotten and its outreach across as many demographics as possible, and is a ranking that is determined by the amount of users that rated the show regardless if it was positive or not.
 
-  This presents two ways for newcomers to judge a show before watching. They can be inclined to start a show that is subjectively rated as one of the best as ranked by the MAL community, or choose one that has gained the most traction despite any apparent flaws or drawbacks that may deter a positive watching experience. As such, it should be noted that popularity is not a metric that is inherently positive, but can also imply the notorious status of a show, especially if it is ranked low in terms of rating but manages to be much more popular than its rating score suggests. This creates an interesting method to identify shows that have managed to be popular despite its poor ranking performance. It could be that the show has notoriously bad traits that often gets shared to others to ridicule or prank unsuspecting friends to watch and experience a show that can be "so bad that its good". The anime may have been able to maintain a good quality throughout its run time, but eventually hit a point in the plot that polarizes the show's watchers. Regardless, there are many ways to interpret the collective opinion of a show on MAL with the presence of ranking both its ratings and popularity. While the rating of a show is indicative of how well-received the show is strictly by the subject and content of the show itself, the popularity of a show can be shrouded in mystery and depend on many logistical factors the put an anime in the limelight. 
+  (EDIT) This presents two ways for newcomers to judge a show before watching. They can be inclined to start a show that is subjectively rated as one of the best as ranked by the MAL community, or choose one that has gained the most traction despite any apparent flaws or drawbacks that may deter a positive watching experience. As such, it should be noted that popularity is not a metric that is inherently positive, but can also imply the notorious status of a show, especially if it is ranked low in terms of rating but manages to be much more popular than its rating score suggests. This creates an interesting method to identify shows that have managed to be popular despite its poor ranking performance. It could be that the show has notoriously bad traits that often gets shared to others to ridicule or prank unsuspecting friends to watch and experience a show that can be "so bad that its good". The anime may have been able to maintain a good quality throughout its run time, but eventually hit a point in the plot that polarizes the show's watchers. Regardless, there are many ways to interpret the collective opinion of a show on MAL with the presence of ranking both its ratings and popularity. While the rating of a show is indicative of how well-received the show is strictly by the subject and content of the show itself, the popularity of a show can be shrouded in mystery and depend on many logistical factors the put an anime in the limelight. 
 
-  With all of this in mind, the objective of this analysis is to determine the factors that influence an anime's popularity. How an anime becomes well-known and circulated through the community and even seeps through the cracks and becomes mainstream is an interesting topic to discuss due to the many facets of the show in terms of its production, marketing, and teams that work on them. To determine these exact causes, a statistical analysis is required to contextualize the exact factors that are relevant in determining an anime's popularity. These factors will be expanded upon in @sec-data. 
+  With all of this in mind, the objective of this analysis is to determine the factors that influence an anime's popularity. How an anime becomes well-known and circulated through the community and even seeps through the cracks and becomes mainstream is an interesting topic to discuss due to the many facets of the show in terms of its production. To determine these exact causes, a statistical analysis is required to contextualize the exact factors that are relevant in determining an anime's popularity. These factors will be expanded upon in @sec-data. 
 
   It was found that (the results of paper, WIP).
 
-  The findings of this paper suggest that the popularity of a show is influenced by a variety of factors that may not be obvious by just watching the show itself. These findings can help someone who is new to watching anime, or those that want something new to watch to find something that gained traction within the community. Popularity can be a factor that is more important than the ranking of the show's quality in many cases, and this is due to the context that the show presents. An anime may be very well-received, but it may be less known within the broader community due to subject matter that may be difficult to process, whether it would be highly philosophical, graphic, or leans in any other kind of extreme direction that may lose the interest of a casual viewer. With less overall viewership of an anime, the show may still be ranked relatively high in terms of rating due to its niche community that watches the show, which can inflate its overall ranking in its ratings. This is why ratings are not necessarily the best metric to depend on for newcomers to find a show to watch, as a niche show may not be widely accessible to a broad audience. However, popularity ranking can be much more indicative of a potential show someone can watch due to its exposure that is not dependent on the taste or bias of the viewer. As such, the (factors that influence popularity that will be discussed on, WIP).
+  (EDIT) The findings of this paper suggest that the popularity of a show is influenced by a variety of factors that may not be obvious by just watching the show itself. These findings can help someone who is new to watching anime, or those that want something new to watch to find something that gained traction within the community. Popularity can be a factor that is more important than the ranking of the show's quality in many cases, and this is due to the context that the show presents. An anime may be very well-received, but it may be less known within the broader community due to subject matter that may be difficult to process, whether it would be highly philosophical, graphic, or leans in any other kind of extreme direction that may lose the interest of a casual viewer. With less overall viewership of an anime, the show may still be ranked relatively high in terms of rating due to its niche community that watches the show, which can inflate its overall ranking in its ratings. This is why ratings are not necessarily the best metric to depend on for newcomers to find a show to watch, as a niche show may not be widely accessible to a broad audience. However, popularity ranking can be much more indicative of a potential show someone can watch due to its exposure that is not dependent on the taste or bias of the viewer. As such, the (factors that influence popularity that will be discussed on, WIP).
 
   This statistical analysis is divided into several sections, with @sec-data giving context and describing the variables that will be used to determine the underlying reason behind an anime's popularity. @sec-model describes the model used to create the correlation between a show's popularity and the factors that possibly influence it. @sec-results demonstrate the overall findings of the statistical analysis and puts into perspective how these factors affect a show's popularity, and @sec-discussion covers a discussion of the observations that were made and inferring the causes based on the results of the data. 
 
@@ -53,7 +59,7 @@ This report focuses on the data available from MyAnimeList (MAL) since July 2022
 
 Despite the data from MAL being used in this analysis, there are other anime databases that could have been used, such as Anilist and AniDB, MAL has its prominence within the anime community as exemplified by its high user and visitor counts, making it a more viable option to compare the primary measurement of interest: popularity. 
 
-Regardless, data from MAL was imported and analyzed in R [@r2023]. To aid in this analysis, the `dplyr` [@wickham2023] and `ggplot2` [@wickham2016] packages from the `tidyverse` package [@wickham2019] were used to clean the data set and generate graphs to visualize it respectively. 
+Regardless, data from MAL was imported and analyzed in R [@r2023]. To aid in this analysis, the `dplyr` [@wickham2023] and `ggplot2` [@wickham2016] packages from the `tidyverse` package [@wickham2019] were used to clean the data set and generate graphs to visualize it respectively. The `knitr` [@xie2021] and `kableExtra` [@zhu2021] packages were used to create the tables used within this analysis.
 
 ## Data Cleaning and Description {#sec-data-cleaning}
 
@@ -67,39 +73,124 @@ Cleaning involved filtering specific variables within the data set to include th
 * `episodes`: the number of episodes that a given anime has.
 * `source`: the type of source material that the anime was adapted from (e.g. manga, light novel, anime original, etc.).
 * `start_year`: the year in which the anime first started to broadcast.
-* `start_season`: the season in which the anime broadcasted in.
-* `genres`: the genres of the anime.
 * `studios`: the names of the studios that produced the anime.
-* `licensors`: the names of the licensors that release the anime to different audiences.
 
 The important variable of note to consider from this list is `members`. This is a quantitative variable that popularity ranking on MAL is completely dependent on. Other than `title`, the rest of the variables will be tested to see if they have any kind of influence on the amount of users that have specific shows on their lists. 
 
-## Data Visualization {#sec data-visualization}
+## Preliminary Data Analysis {#sec-prelim-data-analysis}
 
+As seen in Table 1, users influence what shows are considered to be the top rated among the MAL community. However, an interesting observation to note is that although the common denominator with the entries of the top 10 shows is the high user ratings, there seems to be a disparity with the amount of users that have simply watched the show compared to the amount of users that have actually rated the show. The top rated show, Fullmetal Alchemist: Brotherhood, has approximately 3,000,000 members, whereas the seventh rated show, Hangyaku no Lelouch R2, has approximately 1,600,000 members, which is almost half of the former. As a result, the popularity of a given anime cannot be determined simply by the aggregated user score, but must take into account how many people actually have the show in their list, regardless if they rated it or not. 
 
+\newpage
 
 ```{r}
-#| label: fig-
-#| fig-cap: N/A
+
+#| label: tbl-usersummary
+#| message: false
+#| warning: false
+
+animeusersummary |>
+  kable(
+    caption = "Sample from the top rated anime of MAL, which includes the variables that MAL users influence.",
+    col.names = c("Rank",
+                  "Title",
+                  "User Rating",
+                  "# of Ratings",
+                  "# of Members"),
+    booktabs = TRUE,
+    longtable = TRUE,
+    linesep = ""
+  ) |>
+  kable_styling(font_size = 10)
+
+```
+
+Table 2 describes the same top ten shows on MyAnimeList, but from the perspective of the information that describes the anime itself. There are many facets that can differentiate anime, such as the source material of the show or the medium in which it is presented. Source material such as manga and visual novels can provide much more context within a story and be rich with information and world building, which can contribute to an overall more appealing story to users. The medium of which the anime is presented, such as if the anime was a feature film, may be more accessible to a general audience due to a smaller time commitment to watch the show compared to episodic series that require more time to watch and process.
+
+```{r}
+
+#| label: tbl-animesummary
+#| message: false
+#| warning: false
+
+animeinformationsummary |>
+  kable(
+    caption = "Sample from the top rated anime of MAL, which includes the information of each anime itself.",
+    col.names = c("Rank",
+                  "Title",
+                  "Show Type",
+                  "Episode Count",
+                  "Source Material",
+                  "Start Year",
+                  "Studios"),
+    booktabs = TRUE,
+    longtable = TRUE,
+    linesep = ""
+  ) |>
+  kable_styling(font_size = 10) |>
+  column_spec(2, width = "4cm") |>
+  column_spec(3, width = "1cm") |>
+  column_spec(4, width = "1cm") |>
+  column_spec(5, width = "1.5cm") |>
+  column_spec(6, width = "1cm") |>
+  column_spec(7, width = "3cm") 
+ 
+    
+```
+
+The main variables of interest as mentioned previously are medium of the show, episode count, source material, initial release year, studios, and licensors. These are all important and can possibly influence the popularity of an anime without giving any actual information of what the anime is about. First, a visualization of how viewership is impacted depending on how old an anime is can be seen in @fig-memberyear. 
+
+```{r}
+#| label: fig-memberyear
+#| fig-cap: Visualization of the amount of viewers of a specific anime depending on the year of the anime's release. It can be seen that the amount of viewers of an anime increase considerably past the year 2000, but there are still many anime, especially between 1975 and 2000 with much less viewers.
 #| echo: false
+#| message: false
+#| warning: false
+
+ggplot(
+  cleanedanime2, aes(
+    x=start_year,
+    y=members
+    )
+  ) + geom_point(
+    alpha = 0.15 #adjusting the transparency of the points to see the density of anime within specific years
+  ) + 
+  labs(
+    x = "Start Year",
+    y = "Members"
+  )
 
 
 ```
 
+It can be seen that there are considerable more entries of anime in general, as more shows were produced in the 1970s [@fig-memberyear]. However, there does seem to be more MAL users that watch shows around past the year 2000 mark. Meanwhile, MAL viewership for anime produced before 1975 are rarely seen in comparison.
+
 
 
 ```{r}
 #| label: fig-
 #| fig-cap: N/A
 #| echo: false
-#| fig-width: 8
-#| fig-height: 4
+#| warning: false
+
 
 ```
 
 
 
 # Model {#sec-model}
+
+A multiple linear regression model can be used to predict how each of the qualitative independent factors (show type, episode count, start year, source material, studios) can affect how many users of MAL watch a given anime. 
+
+```{r}
+
+cleanedanime2$type <-as.factor(cleanedanime2$type)
+anime_model <- lm(members ~ episodes, data = cleanedanime2)
+
+summary(anime_model)
+
+
+```
 
 
 
@@ -132,10 +223,10 @@ Extract of questions from @gebru2021.
 **Motivation**
 
 1. *For what purpose was the dataset created? Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description.*
-    - This dataset was created to be used to analyze the various ways of monetisations that the video game Black Desert Online employs. Due to the lack of APIs and useful tracking tools provided by Pearl Abyss--the developers behind Black Desert Online--A survey was used instead to obtain this dataset through convenience sampling.
-    -
+    - This dataset was created to be used to aggregate the information of anime from the MAL database to be specifically used for statistical analysis. It can be hard to access publicly available information directly from the MAL and Jikan APIs, so this solution makes it easier for anyone to simply download and pursue exploratory data analysis with the plethora of information the data set provides.
+
 2. *Who created the dataset (for example, which team, research group) and on behalf of which entity (for example, company, institution, organization)?*
-    - The survey used to collect the dataset was created by Tian Yi Zhang, a undergraduate student at the University of Toronto and the author of this paper.
+    - The dataset was created by Andreu Vall Hernandez, a user on Kaggle. There was no specific intent in mind for the creation of this dataset but to make the information from the MAL and Jikan APIs publicly available. The dataset was not created for any specific entity.
     -
 3. *Who funded the creation of the dataset? If there is an associated grant, please provide the name of the grantor and the grant name and number.*
     - No organization funded the creation of the dataset.
@@ -146,9 +237,9 @@ Extract of questions from @gebru2021.
 **Composition**
 
 1. *What do the instances that comprise the dataset represent (for example, documents, photos, people, countries)? Are there multiple types of instances (for example, movies, users, and ratings; people and interactions between them; nodes and edges)? Please provide a description.*
-	- Each instance in the dataset represent a player of the video game Black Desert Online.
+	- Each instance in the dataset represent an anime entry within the MAL database.
 2. *How many instances are there in total (of each type, if appropriate)?*
-	- There are 178 male respondents, 25 female respondents, and 5 respondents of other genders.
+	- There are a total of 24,165 observations, each representing a different show.
 3. *Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set? If the dataset is a sample, then what is the larger set? Is the sample representative of the larger set (for example, geographic coverage)? If so, please describe how this representativeness was validated/verified. If it is not representative of the larger set, please describe why not (for example, to cover a more diverse range of instances, because instances were withheld or unavailable).*
 	- The dataset is a sample of instances. It is obtained through convenience sampling from the larger set of Black Desert Online players on the North American and European servers. Since the dataset is obtained through convenience sampling, it is not representative of the total population in terms fof geographical coverage or any stratification. The choice of convenience sampling is due to the lack of APIs and useful tracking tools provided by Pearl Abyss, the developers behind Black Desert Online.
 4. *What data does each instance consist of? "Raw" data (for example, unprocessed text or images) or features? In either case, please provide a description.*
@@ -268,11 +359,6 @@ Extract of questions from @gebru2021.
 	- One should contact Tian Yi Zhang, the author of the dataset.
 8. *Any other comments?*
 	- None.
-
-
-# Additional details
-
-
 
 \newpage
 

@@ -31,10 +31,7 @@ cleaned_anime <-
     episodes,
     source,
     start_year,
-    start_season,
-    genres,
-    studios,
-    licensors
+    studios
   )
 
 cleaned_anime$type |> #Finding unique types of observations to see if there are any issues to be cleaned
@@ -46,26 +43,30 @@ cleaned_anime$source |>
 cleaned_anime$start_year |>
   unique()
 
-cleaned_anime$start_season |>
-  unique()
-
-cleaned_anime$genres |>
-  unique()
-
 cleaned_anime$studios |>
   unique()
 
-cleaned_anime$licensors |>
-  unique()
-
-cleaned_anime1 <- #Removing unneeded parentheses under specific columns
+cleaned_anime1 <- #Removing unneeded parentheses and underscores under strings
   cleaned_anime |>
-  mutate(genres = str_replace_all(genres, "[\\[\\]']", "")) |>
   mutate(studios = str_replace_all(studios, "[\\[\\]']", "")) |>
-  mutate(licensors = str_replace_all(licensors, "[\\[\\]']", ""))
+  mutate(source = str_replace_all(source, "_", " "))
 
+cleaned_anime2 <- #Creating a subset of anime without NA values
+  cleaned_anime1 |>
+  drop_na()
 
+anime_user_summary <- #Used to visualize summary of anime from user stats
+  cleaned_anime1 |>
+  slice_head(n = 10) |>
+  select(title, score, scored_by, members)
+  
+anime_information_summary <- #Used to visualize summary of an anime's information
+  cleaned_anime1 |>
+  slice_head(n = 10) |>
+  select(title, type, episodes, source, start_year, studios)
 
 #### Save data ####
-write_csv(cleaned_anime, "outputs/data/cleaned_anime.csv")
-
+write.csv(cleaned_anime1, "cleaned_anime1.csv")
+write.csv(cleaned_anime2, "cleaned_anime2.csv")
+write.csv(anime_user_summary, "anime_user_summary.csv")
+write.csv(anime_information_summary, "anime_information_summary.csv")

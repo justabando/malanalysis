@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Models... [...UPDATE THIS...]
+# Purpose: Models the linear regression model used for analysis
 # Author: Justin Abando
 # Date: 18 April 2023
 # Contact: justin.abando@mail.utoronto.ca
@@ -8,10 +8,9 @@
 
 #### Workspace setup ####
 library(tidyverse)
-library(rstanarm)
 
 #### Read data ####
-analysis_data <- read_csv("outputs/data/analysis_data.csv")
+cleanedanime2 <- read_csv("outputs/data/cleaned_anime2.csv")
 
 ### Model data ####
 first_model <-
@@ -31,3 +30,5 @@ saveRDS(
   first_model,
   file = "outputs/models/first_model.rds"
 )
+
+?stan_glm
