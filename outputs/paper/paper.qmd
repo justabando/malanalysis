@@ -1,11 +1,11 @@
 ---
-title: The multifaceted nature that determine an anime show's popularity involves (findings of the paper, WIP).
+title: The nature that determine an anime show's popularity involves the source material of the adaptation and the years it was released.
 author: 
   - Justin Abando
 thanks: "Code and data are available at: https://github.com/justabando/malanalysis."
 date: "`r Sys.time()`"
 date-format: "D MMMM YYYY"
-abstract: "There are online lists and forums where users can vote on what they believe to be the most popular anime such as MyAnimeList (MAL). However, there are no metrics to determine why specific anime stand out, with some shows being rated lower in terms of quality, yet have more popularity based on MAL user responses. Data was retrieved to determine what factors could be responsible for a show's popularity. It was found that (results of analysis, WIP). The findings of this paper suggests reasons why a particular anime becomes popular, which can be relevant to those that are new to watching anime or those that want something new to watch as they would gravitate to shows that receive traction by a broader demographic."
+abstract: "There are online lists and forums where users can vote on what they believe to be the most popular anime such as MyAnimeList (MAL). However, there are no metrics that can determine why specific anime stand out, and so data was retrieved to determine what factors could be responsible for a show's popularity. It was found that the source material and year of the anime's release were significant in determining how many users of MAL watched the anime. The findings of this paper suggests reasons why a particular anime becomes popular, which can be relevant to those that are new to watching anime or those that want something new to watch as they would gravitate to shows that receive traction by a broader demographic."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 library(tidyverse)
 library(dplyr)
-library(janitor)
+library(broom)
 library(ggplot2)
 library(knitr)
 library(kableExtra)
@@ -41,13 +41,13 @@ animeinformationsummary <- read_csv("../../outputs/data/anime_information_summar
 
   With a large user base, MAL members can personally rate and review the shows that they watch and catalogue them in their anime lists. While this is useful at the individual level to keep track of their own journey and see the depth and breadth of the shows they watch, it is also useful at the community level. The rating and reviews that are given from individuals are aggregated and averaged using all of the data from other MAL users to give an overall subjective ranking of each show in terms of popularity and rating. It should be noted that a show's ranking is not defined by objective means, but is the majority voice of all the subjective reviews left by the users of the website. With MAL, popularity and rating are both metrics used to sort and determine the top anime based on the reviews and ratings that were given to them by users. While the rating of the show matters for popularity to an extent, a large part of it's score is dependent on the content of the show itself. The rating is dependent on a scale of 1-10, and takes the average score of all the users that have rated the show. Meanwhile, popularity as a ranking metric demonstrates how much exposure the show has gotten and its outreach across as many demographics as possible, and is a ranking that is determined by the amount of users that rated the show regardless if it was positive or not.
 
-  (EDIT) This presents two ways for newcomers to judge a show before watching. They can be inclined to start a show that is subjectively rated as one of the best as ranked by the MAL community, or choose one that has gained the most traction despite any apparent flaws or drawbacks that may deter a positive watching experience. As such, it should be noted that popularity is not a metric that is inherently positive, but can also imply the notorious status of a show, especially if it is ranked low in terms of rating but manages to be much more popular than its rating score suggests. This creates an interesting method to identify shows that have managed to be popular despite its poor ranking performance. It could be that the show has notoriously bad traits that often gets shared to others to ridicule or prank unsuspecting friends to watch and experience a show that can be "so bad that its good". The anime may have been able to maintain a good quality throughout its run time, but eventually hit a point in the plot that polarizes the show's watchers. Regardless, there are many ways to interpret the collective opinion of a show on MAL with the presence of ranking both its ratings and popularity. While the rating of a show is indicative of how well-received the show is strictly by the subject and content of the show itself, the popularity of a show can be shrouded in mystery and depend on many logistical factors the put an anime in the limelight. 
+  This presents two ways for newcomers to judge a show before watching. They can be inclined to start a show that is subjectively rated as one of the best as ranked by the MAL community, or choose one that has gained the most traction despite any apparent flaws or drawbacks that may deter a positive watching experience. As such, it should be noted that popularity is not a metric that is inherently positive, but can also imply the notorious status of a show, especially if it is ranked low in terms of rating but manages to be much more popular than its rating score suggests. This creates an interesting method to identify shows that have managed to be popular despite its poor ranking performance. It could be that the show has notoriously bad traits that often gets shared to others to ridicule or prank unsuspecting friends to watch and experience a show that can be "so bad that its good". The anime may have been able to maintain a good quality throughout its run time, but eventually hit a point in the plot that polarizes the show's watchers. Regardless, there are many ways to interpret the collective opinion of a show on MAL with the presence of ranking both its ratings and popularity. While the rating of a show is indicative of how well-received the show is strictly by the subject and content of the show itself, the popularity of a show can be shrouded in mystery and depend on many logistical factors the put an anime in the limelight. 
 
   With all of this in mind, the objective of this analysis is to determine the factors that influence an anime's popularity. How an anime becomes well-known and circulated through the community and even seeps through the cracks and becomes mainstream is an interesting topic to discuss due to the many facets of the show in terms of its production. To determine these exact causes, a statistical analysis is required to contextualize the exact factors that are relevant in determining an anime's popularity. These factors will be expanded upon in @sec-data. 
 
-  It was found that (the results of paper, WIP).
+  It was found that the source material of the anime that it was adapted into had a significant impact on MAL viewership of anime, as shown with a linear regression model found in @sec-model. Additionally, ___________.
 
-  (EDIT) The findings of this paper suggest that the popularity of a show is influenced by a variety of factors that may not be obvious by just watching the show itself. These findings can help someone who is new to watching anime, or those that want something new to watch to find something that gained traction within the community. Popularity can be a factor that is more important than the ranking of the show's quality in many cases, and this is due to the context that the show presents. An anime may be very well-received, but it may be less known within the broader community due to subject matter that may be difficult to process, whether it would be highly philosophical, graphic, or leans in any other kind of extreme direction that may lose the interest of a casual viewer. With less overall viewership of an anime, the show may still be ranked relatively high in terms of rating due to its niche community that watches the show, which can inflate its overall ranking in its ratings. This is why ratings are not necessarily the best metric to depend on for newcomers to find a show to watch, as a niche show may not be widely accessible to a broad audience. However, popularity ranking can be much more indicative of a potential show someone can watch due to its exposure that is not dependent on the taste or bias of the viewer. As such, the (factors that influence popularity that will be discussed on, WIP).
+  The findings of this paper suggest that the popularity of a show is influenced by a variety of factors that may not be obvious by just watching the show itself. These findings can help someone who is new to watching anime, or those that want something new to watch to find something that gained traction within the community. Popularity can be a factor that is more important than the ranking of the show's quality in many cases, and this is due to the context that the show presents. An anime may be very well-received, but it may be less known within the broader community. With less overall viewership of an anime, the show may still be ranked relatively high in terms of rating due to its niche community that watches the show, which can inflate its overall ranking in its ratings. This is why ratings are not necessarily the best metric to depend on for newcomers to find a show to watch, as a niche show may not be widely accessible to a broad audience. However, popularity ranking can be much more indicative of a potential show someone can watch due to its exposure that is not dependent on the taste or bias of the viewer.
 
   This statistical analysis is divided into several sections, with @sec-data giving context and describing the variables that will be used to determine the underlying reason behind an anime's popularity. @sec-model describes the model used to create the correlation between a show's popularity and the factors that possibly influence it. @sec-results demonstrate the overall findings of the statistical analysis and puts into perspective how these factors affect a show's popularity, and @sec-discussion covers a discussion of the observations that were made and inferring the causes based on the results of the data. 
 
@@ -59,7 +59,7 @@ This report focuses on the data available from MyAnimeList (MAL) since July 2022
 
 Despite the data from MAL being used in this analysis, there are other anime databases that could have been used, such as Anilist and AniDB, MAL has its prominence within the anime community as exemplified by its high user and visitor counts, making it a more viable option to compare the primary measurement of interest: popularity. 
 
-Regardless, data from MAL was imported and analyzed in R [@r2023]. To aid in this analysis, the `dplyr` [@wickham2023] and `ggplot2` [@wickham2016] packages from the `tidyverse` package [@wickham2019] were used to clean the data set and generate graphs to visualize it respectively. The `knitr` [@xie2021] and `kableExtra` [@zhu2021] packages were used to create the tables used within this analysis.
+Regardless, data from MAL was imported and analyzed in R [@r2023]. To aid in this analysis, the `dplyr` [@wickham2023] and `ggplot2` [@wickham2016] packages from the `tidyverse` package [@wickham2019] were used to clean the data set and generate graphs to visualize it respectively. The `knitr` [@xie2021] and `kableExtra` [@zhu2021] packages were used to create the tables used within this analysis. The table used to generate the summary of the regression analysis was tidied using the `broom` package [@robinson2023].
 
 ## Data Cleaning and Description {#sec-data-cleaning}
 
@@ -73,9 +73,8 @@ Cleaning involved filtering specific variables within the data set to include th
 * `episodes`: the number of episodes that a given anime has.
 * `source`: the type of source material that the anime was adapted from (e.g. manga, light novel, anime original, etc.).
 * `start_year`: the year in which the anime first started to broadcast.
-* `studios`: the names of the studios that produced the anime.
 
-The important variable of note to consider from this list is `members`. This is a quantitative variable that popularity ranking on MAL is completely dependent on. Other than `title`, the rest of the variables will be tested to see if they have any kind of influence on the amount of users that have specific shows on their lists. 
+The important variable of note to consider from this list is `members`. This is a quantitative variable that popularity ranking on MAL is completely dependent on. The popularity ranking of an anime is directly affected by how many members an anime has, and so an anime that has the most members would have the #1 popularity ranking. Other than `title`, the rest of the variables will be tested to see if they have any kind of influence on the amount of users that have specific shows on their lists. 
 
 ## Preliminary Data Analysis {#sec-prelim-data-analysis}
 
@@ -107,6 +106,8 @@ animeusersummary |>
 
 Table 2 describes the same top ten shows on MyAnimeList, but from the perspective of the information that describes the anime itself. There are many facets that can differentiate anime, such as the source material of the show or the medium in which it is presented. Source material such as manga and visual novels can provide much more context within a story and be rich with information and world building, which can contribute to an overall more appealing story to users. The medium of which the anime is presented, such as if the anime was a feature film, may be more accessible to a general audience due to a smaller time commitment to watch the show compared to episodic series that require more time to watch and process.
 
+\newpage
+
 ```{r}
 
 #| label: tbl-animesummary
@@ -121,24 +122,170 @@ animeinformationsummary |>
                   "Show Type",
                   "Episode Count",
                   "Source Material",
-                  "Start Year",
-                  "Studios"),
+                  "Start Year"),
     booktabs = TRUE,
     longtable = TRUE,
     linesep = ""
   ) |>
   kable_styling(font_size = 10) |>
-  column_spec(2, width = "4cm") |>
+  column_spec(2, width = "5cm") |>
   column_spec(3, width = "1cm") |>
-  column_spec(4, width = "1cm") |>
-  column_spec(5, width = "1.5cm") |>
-  column_spec(6, width = "1cm") |>
-  column_spec(7, width = "3cm") 
+  column_spec(4, width = "2cm") |>
+  column_spec(5, width = "2.5cm") |>
+  column_spec(6, width = "1cm")
  
     
 ```
 
-The main variables of interest as mentioned previously are medium of the show, episode count, source material, initial release year, studios, and licensors. These are all important and can possibly influence the popularity of an anime without giving any actual information of what the anime is about. First, a visualization of how viewership is impacted depending on how old an anime is can be seen in @fig-memberyear. 
+The main variables of interest as mentioned previously are medium of the show, episode count, source material, initial release year, and studio. These are all important and can possibly influence the popularity of an anime without giving any actual information of what the anime is about. 
+
+
+# Model {#sec-model}
+
+A linear regression model can be used to predict how each of the qualitative independent factors can affect how many users of MAL watch a given anime. One particular variable of note to be examined is the source material of the show, as there is the consideration of fans of the source work of the anime adaptation. Those that follow the source material would naturally have some level of interest in an anime adaptation, and so this model accounts for how significant the source material is in influencing MAL viewership of a show. 
+
+The following linear regression model was created below to illustrate this:
+
+$$
+\text{MAL Viewership} = \beta_0 + \beta_1 \cdot \text{Source Material} + \epsilon
+$$
+With this model uses the following components:
+
+* $\beta_0$: The intercept of the regression line.
+
+* $\beta_1$: The coefficient representing the relationship between source material and members of an anime.
+
+* $\epsilon$: The residual or error term.
+
+Table 3 illustrates the results of the linear regression modelling, where it is seen that several popular source material formats had a significantly low p-value, suggesting there is a correlation between the type of source material the anime is adapted from and MAL viewership. Prominent source material formats such as manga, light novels, and original anime all have p-values less than 0.05, suggesting there is a correlation between the two variables.
+
+\newpage
+
+```{r}
+
+#|label: tbl-regressionmodel
+#|message: false
+#|warning: false
+
+
+anime_model <- lm(members ~ source, data = cleanedanime2)
+
+tidy_anime_model <-
+  anime_model |>
+  summary() |>
+  tidy()
+
+tidy_anime_model |>
+  kable(
+    digits=4, 
+    align = "c", 
+    caption = "Linear regression model summary statistics of the impact of source material on MAL user viewership",
+    col.names = c("Source Type",
+                  "Estimate",
+                  "Std. Error",
+                  "Test Statistic",
+                  "P-value"),    
+    booktabs = TRUE,
+    linesep = "", 
+  )
+
+```
+
+\newpage
+
+# Results {#sec-results}
+
+## Show Type
+
+To visualize how the medium of the anime affects MAL viewership, @fig-membertype demonstrates the influence of format. The most common format is TV anime, followed closely by movie anime. When looking at the MAL members that have watched it, it is observed that the majority of users watch shows within those formats. 
+
+```{r}
+#| label: fig-membertype
+#| fig-cap: Visualization of how many MAL users viewed an anime based on the medium that it was presented in. The most popular mediums to produce anime in are movies and in TV shows, which is reflected with how many MAL users viewed anime in those specific categories. For reference, music anime refers to music videos presented in an anime artstyle, ONA is an original anime special included in DVD or Blu-Ray releases of an anime, OVA is an original video anime released exclusively online, and special anime are extra episodes attached to an already established series.
+#| echo: false
+#| message: false
+#| warning: false
+
+ggplot(
+  cleanedanime2, aes(
+    x=type,
+    y=members
+    )
+  ) + geom_point(
+    aes(colour = type), #Adding colour to differentiate each show type
+    alpha = 0.50 
+  ) + 
+  labs(
+    x = "Show Type",
+    y = "Members"
+  )
+
+
+```
+
+\newpage
+
+## Episode Count
+
+Episode count is also a factor that may affect how many MAL users would view a specific show. This is visualized in @fig-memberepisode, where the length of a series impacts MAL viewership. It is seen that many shows with episodes around 1, 12-13 and 24-26 have the most MAL viewership by users.
+
+```{r}
+#| label: fig-memberepisode
+#| fig-cap: Visualization of how the episode count of an anime can influence MAL user viewership. There are areas with many specific peaks in viewership, most notably at the 1 episode, 12-13 episode, and 24-26 episode mark, which likely would pertain to movies and seasonal anime. 
+#| echo: false
+#| message: false
+#| warning: false
+
+ggplot(
+  cleanedanime2, aes(
+    x=episodes,
+    y=members
+    )
+  ) + geom_point(
+    alpha = 0.50) + 
+  xlim(0, 100) +
+  labs(
+    x = "Episodes",
+    y = "Members"
+  )
+
+
+```
+
+\newpage
+
+## Source Material
+
+The importance of the source material of an anime as explained in @sec-model is visualized in @fig-membersource. Many types of source material adaptations are present, with the most important ones to note being manga, light novels, and originals, which have the most MAL user viewership than any other source material disregarding outliers.
+
+```{r}
+#| label: fig-membersource
+#| fig-cap: The influence of source material in MAL user viewership. Manga has the most pronounced and highest viewership of any other source material, followed closely by light novels and original anime.
+#| echo: false
+#| message: false
+#| warning: false
+
+ggplot(
+  cleanedanime2, aes(
+    x=source,
+    y=members
+    )
+  ) + geom_point(
+    aes(colour = source), #Adding colour to differentiate each show type
+    alpha = 0.50 
+  ) + labs(
+    x = "Source Material",
+    y = "Members"
+  ) + theme(axis.text.x = element_text(angle = 90))
+
+
+```
+
+\newpage
+
+## Year of Release
+
+A visualization of how viewership is impacted depending on how old an anime is can be seen in @fig-memberyear. It can be seen that there are considerable more entries of anime in general, as more shows were produced in the 1970s. However, there does seem to be more MAL users that watch shows around past the year 2000 mark. Meanwhile, MAL viewership for anime produced before 1975 are rarely seen in comparison.
 
 ```{r}
 #| label: fig-memberyear
@@ -163,48 +310,20 @@ ggplot(
 
 ```
 
-It can be seen that there are considerable more entries of anime in general, as more shows were produced in the 1970s [@fig-memberyear]. However, there does seem to be more MAL users that watch shows around past the year 2000 mark. Meanwhile, MAL viewership for anime produced before 1975 are rarely seen in comparison.
-
-
-
-```{r}
-#| label: fig-
-#| fig-cap: N/A
-#| echo: false
-#| warning: false
-
-
-```
-
-
-
-# Model {#sec-model}
-
-A multiple linear regression model can be used to predict how each of the qualitative independent factors (show type, episode count, start year, source material, studios) can affect how many users of MAL watch a given anime. 
-
-```{r}
-
-cleanedanime2$type <-as.factor(cleanedanime2$type)
-anime_model <- lm(members ~ episodes, data = cleanedanime2)
-
-summary(anime_model)
-
-
-```
-
-
-
-# Results {#sec-results}
-
-
 
 # Discussion {#sec-discussion}
 
+## Show Type 
 
+
+
+## 
 
 ## Limitations and next steps {#sec-limitations}
 
+There are many limitations that are present in this statistical analysis. First, the depth of information is vast as there are many other variables that can be considered when determining the popularity of an anime. Factors from the production side such as the studios that produced the anime, to licensors that release the show on platforms to be watched on are also important for gathering attention to shows. In addition, factors that may give more information about what the show might be about such as the genres and themes may also play an important role as personal appeaal to specific genres may help gravitate MAL users to watch particular shows.
 
+Another consideration that has to be made is in regards to 
 
 \newpage
 
@@ -237,61 +356,60 @@ Extract of questions from @gebru2021.
 **Composition**
 
 1. *What do the instances that comprise the dataset represent (for example, documents, photos, people, countries)? Are there multiple types of instances (for example, movies, users, and ratings; people and interactions between them; nodes and edges)? Please provide a description.*
-	- Each instance in the dataset represent an anime entry within the MAL database.
+	- Each instance in the dataset represent an anime entry within the MAL database since July 2022. 
 2. *How many instances are there in total (of each type, if appropriate)?*
-	- There are a total of 24,165 observations, each representing a different show.
+	- There are a total of 11,890 observations, each representing a different show.
 3. *Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set? If the dataset is a sample, then what is the larger set? Is the sample representative of the larger set (for example, geographic coverage)? If so, please describe how this representativeness was validated/verified. If it is not representative of the larger set, please describe why not (for example, to cover a more diverse range of instances, because instances were withheld or unavailable).*
-	- The dataset is a sample of instances. It is obtained through convenience sampling from the larger set of Black Desert Online players on the North American and European servers. Since the dataset is obtained through convenience sampling, it is not representative of the total population in terms fof geographical coverage or any stratification. The choice of convenience sampling is due to the lack of APIs and useful tracking tools provided by Pearl Abyss, the developers behind Black Desert Online.
+	- The dataset contains a sample of instances from the total shows available on the MAL database which can be accessed from the official MAL API. The last update to this dataset that was obtained was on July 2022, and is not indicative of all of the instances that may have been added between then and the time of this paper being published. Additionally, the dataset was cleaned to include instances that had all of the necessary variables to conduct statistical analysis on in this project. 
 4. *What data does each instance consist of? "Raw" data (for example, unprocessed text or images) or features? In either case, please provide a description.*
-	-  Each instance of data consists of a player's age, gender, total playtime in the game and on their main character, their rated importance of various subscription items in the game, and their total spending on various types of items in the game.
+	-  Each instance of data consists of the title of the show, score of the show, how many MAL users added it to their list, how many MAL users rated it, medium of the show, episode count, source material, start year, and studio that produced the show.
 5. *Is there a label or target associated with each instance? If so, please provide a description.*
-	- the gender is either male, female, or other.
+	- The label of each instance is an anime.
 6. *Is any information missing from individual instances? If so, please provide a description, explaining why this information is missing (for example, because it was unavailable). This does not include intentionally removed information, but might include, for example, redacted text.*
-	- There is lack of female and other genders in certain age groups in the dataset due to insufficient sample size.
+	- N/A
 7. *Are relationships between individual instances made explicit (for example, users' movie ratings, social network links)? If so, please describe how these relationships are made explicit.*
-	- There are no relationships between individual instances.
+	- Some relationships between individual instances are made explicit, for example when a show has a movie with the prefix of the movie title being the show's name. It is also made explicit for sequels of anime or spin-offs that include the main title of the original showl.
 8. *Are there recommended data splits (for example, training, development/validation, testing)? If so, please provide a description of these splits, explaining the rationale behind them.*
-	- None.
+	- N/A
 9. *Are there any errors, sources of noise, or redundancies in the dataset? If so, please provide a description.*
-	- The sample size is unequal for female and male respondents. This unequal sample size does negatively affect the assumption of equal variances. Furthermore, lack of detailed statistic tracking tools and APIs provided by Pearl Abyss--the developer of Black Desert Online--means that playtime and most monetary questions in the survey rely on the respondents' best estimates. 
+	- Some instances of the dataset do not contain any information, which affect how many shows could be analyzed in this report.
 10. *Is the dataset self-contained, or does it link to or otherwise rely on external resources (for example, websites, tweets, other datasets)? If it links to or relies on external resources, a) are there guarantees that they will exist, and remain constant, over time; b) are there official archival versions of the complete dataset (that is, including the external resources as they existed at the time the dataset was created); c) are there any restrictions (for example, licenses, fees) associated with any of the external resources that might apply to a dataset consumer? Please provide descriptions of all external resources and any restrictions associated with them, as well as links or other access points, as appropriate.*
 	- The dataset is self-contained.
 11. *Does the dataset contain data that might be considered confidential (for example, data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals' non-public communications)? If so, please provide a description.*
-	- Breakdown of the monetary transcations of each player might be considered a confidential data by Pearl Abyss. However, the survey was designed to be as transparent with the respondents as possible, and no data that could be linked back to the respondents were included in the survey nor in the final paper.
+	- All of the data within the dataset is publicly available information on the MAL website.
 12. *Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety? If so, please describe why.*
-	- The dataset does not contain any offensive or insulting data.
+	- The dataset does contain keywords that may be offensive or insulting depending on the titles, themes, and descriptions of the instances.
 13. *Does the dataset identify any sub-populations (for example, by age, gender)? If so, please describe how these subpopulations are identified and provide a description of their respective distributions within the dataset.*
-	- The datasets are split by age groups and gender as self-identified by the respondents.
+	- N/A
 14. *Is it possible to identify individuals (that is, one or more natural persons), either directly or indirectly (that is, in combination with other data) from the dataset? If so, please describe how.*
-	- It is entirely impossible to identify individuals from the dataset.
+	- N/A
 15. *Does the dataset contain data that might be considered sensitive in any way (for example, data that reveals race or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)? If so, please provide a description.*
-	- The datasets do not contain data that might be considered sensitive in any way.
+	- The dataset does not contain data that could be considered sensitive.
 16. *Any other comments?*
 	- None.
 
 **Collection process**
 
 1. *How was the data associated with each instance acquired? Was the data directly observable (for example, raw text, movie ratings), reported by subjects (for example, survey responses), or indirectly inferred/derived from other data (for example, part-of-speech tags, model-based guesses for age or language)? If the data was reported by subjects or indirectly inferred/derived from other data, was the data validated/verified? If so, please describe how.*
-	- The data was collected through a survey distributed to the subreddit page of Black Desert Online, the official website's forum of Black Desert Online, and the steam discussion page of Black Desert Online. The data was reported by the respondents based on their best estimates.
+	- The data was collected via Kaggle and was directly observable, with variables and values explicitly visible.
 2. *What mechanisms or procedures were used to collect the data (for example, hardware apparatuses or sensors, manual human curation, software programs, software APIs)? How were these mechanisms or procedures validated?*
-	- The data was collected through a survey distributed to the subreddit page of Black Desert Online, the official website's forum of Black Desert Online, and the steam discussion page of Black Desert Online. The data was reported by the respondents based on their best estimates. Google Forms is used to produce the survey.
+	- The data was manually curated by combining two APIs, MAL and Jikan to obtian all of the relevant information within the dataset.
 3. *If the dataset is a sample from a larger set, what was the sampling strategy (for example, deterministic, probabilistic with specific sampling probabilities)?*
-	- Convenience sampling was used due to lack of detailed statistic tracking tools and APIs provided by Pearl Abyss.
+	- N/A
 4. *Who was involved in the data collection process (for example, students, crowdworkers, contractors) and how were they compensated (for example, how much were crowdworkers paid)?*
-	- No one but the author is involved in the data collection process.
+	- Only the original author, Andreu Vall Hernandez, was involved in the data collection process.
 5. *Over what timeframe was the data collected? Does this timeframe match the creation timeframe of the data associated with the instances (for example, recent crawl of old news articles)? If not, please describe the timeframe in which the data associated with the instances was created.*
-	- The data was collected over the span of four days from April 18, 2022 to April 21, 2022.
+	- The data was last collected on July 25th, 2022, with older versions extending as far back as June 21st, 2022.
 6. *Were any ethical review processes conducted (for example, by an institutional review board)? If so, please provide a description of these review processes, including the outcomes, as well as a link or other access point to any supporting documentation.*
-	- No ethical review processes were conducted. Subreddit moderators were consulted for permission of posting the survey.
+	- No ethical review processes were conducted.
 7. *Did you collect the data from the individuals in question directly, or obtain it via third parties or other sources (for example, websites)?*
-	- The data was collected through a survey distributed to the subreddit page of Black Desert Online, the official website's forum of Black Desert Online, and the steam discussion page of Black Desert Online.
+	- The data was collected from a third-party source, Kaggle.
 8. *Were the individuals in question notified about the data collection? If so, please describe (or show with screenshots or other information) how notice was provided, and provide a link or other access point to, or otherwise reproduce, the exact language of the notification itself.*
-	- Respondents were informed of the purpose of the data collection: "I wish to study the different monetization methods that BDO employs. Due to the lack of proper APIs provided by Pearl Abyss, I have resorted to surveys instead."
-	- "To be clear, there will not be any information present in the final paper that can be used to link the data back to the original respondents."
+	- The individual who created the dataset was not notified about the data collection.
 9. *Did the individuals in question consent to the collection and use of their data? If so, please describe (or show with screenshots or other information) how consent was requested and provided, and provide a link or other access point to, or otherwise reproduce, the exact language to which the individuals consented.*
-	- Since data collection is through a survey, consent was explicitly provided when respondents clicked the survey link.
+	- The individual who created the dataset did not give any consent to the collection of the data that was gathered, however it was made available on Kaggle for use by the public, and included their GitHub repo to demonstrate how they collected the data for reproducibility.
 10. *If consent was obtained, were the consenting individuals provided with a mechanism to revoke their consent in the future or for certain uses? If so, please provide a description, as well as a link or other access point to the mechanism (if appropriate).*
-	- Respondents can revoke consent by simply exiting the survey.
+	- N/A
 11. *Has an analysis of the potential impact of the dataset and its use on data subjects (for example, a data protection impact analysis) been conducted? If so, please provide a description of this analysis, including the outcomes, as well as a link or other access point to any supporting documentation.*
 	- N/A.
 12. *Any other comments?*
@@ -300,42 +418,41 @@ Extract of questions from @gebru2021.
 **Preprocessing/cleaning/labeling**
 
 1. *Was any preprocessing/cleaning/labeling of the data done (for example, discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)? If so, please provide a description. If not, you may skip the remaining questions in this section.*
-	- Certain variables names were shortened in Google Spreadsheet before the dataset is used for analysis in this paper.
+	- Variable names were renamed to be more clear, and the dataset was trimmed down to only include pertinent variables required for the analysis.
 2. *Was the "raw" data saved in addition to the preprocessed/cleaned/labeled data (for example, to support unanticipated future uses)? If so, please provide a link or other access point to the "raw" data.*
-	- The raw data is accessable in the github link provided in this paper.
+	- The raw data is accessible via the GitHub repo on the first page of the report.
 3. *Is the software that was used to preprocess/clean/label the data available? If so, please provide a link or other access point.*
-	- statistical programming language R [@citeR] was used to preprocess the datasets.
-	- Google Spreadsheet is publicly available for use by registering a Google account.
+	- Statistical programming language R [@r2023] was used to preprocess, clean, and label the data.
 4. *Any other comments?*
 	- None.
 
 **Uses**
 
 1. *Has the dataset been used for any tasks already? If so, please provide a description.*
-	- At the time of writing this, only this paper has utilized the dataset.
+	- It is unknown if the dataset has been used by others as the dataset was made publicly available for anyone to use.
 2. *Is there a repository that links to any or all papers or systems that use the dataset? If so, please provide a link or other access point.*
-	- The repository for this paper, which uses the datasets, are available at https://github.com/zhan7818/bdo_monetization.
+	- The repository for how the dataset was created are available at https://github.com/andreu-vall/myanimelist-api-scraping
 3. *What (other) tasks could the dataset be used for?*
-	- The datasets could be used to modeling or finding relationship between total in-game spending and age groups.
+	- The dataset can be used for analysis of different factors, or for different analytic reasons than the one described in this report. Much of the data pertains to information only present on MAL, so any kind of analysis on MAL could be done with this dataset.
 4. *Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses? For example, is there anything that a dataset consumer might need to know to avoid uses that could result in unfair treatment of individuals or groups (for example, stereotyping, quality of service issues) or other risks or harms (for example, legal risks, financial harms)? If so, please provide a description. Is there anything a dataset consumer could do to mitigate these risks or harms?*
 	- None.
 5. *Are there tasks for which the dataset should not be used? If so, please provide a description.*
-	- The datasets should not be used in an effort to harass or discriminate against the general Black Desert Online community nor should it be used to misrepresent information about the said community.
+	- None, all of the data present within the dataset is publicly available information on the MAL webite, the dataset simply aggregates all of that information into one file.
 6. *Any other comments?*
 	- None.
 
 **Distribution**
 
 1. *Will the dataset be distributed to third parties outside of the entity (for example, company, institution, organization) on behalf of which the dataset was created? If so, please provide a description.*
-	- Since there dataset is publicly available through the github link, yes.
+	- Yes, as the GitHub repo will be made public.
 2. *How will the dataset be distributed (for example, tarball on website, API, GitHub)? Does the dataset have a digital object identifier (DOI)?*
-	- The dataset is distributed on Tian Yi Zhang's github page, along with this paper: https://github.com/zhan7818/bdo_monetization.
+	- The dataset is distributed on the GitHub repo: https://github.com/justabando/malanalysis. There is no DOI.
 3. *When will the dataset be distributed?*
-  - The datasets used in this paper is distributed in 2022.
+  - The datasets used in this paper will be distributed in April 2023.
 4. *Will the dataset be distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)? If so, please describe this license and/ or ToU, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms or ToU, as well as any fees associated with these restrictions.*
-	- The dataset is distributed under a MIT license.
+	- The dataset that was created for this paper is distributed under a MIT license. The original dataset is licensed under CC 1.0 Universal Public Domain Dedication.
 5. *Have any third parties imposed IP-based or other restrictions on the data associated with the instances? If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms, as well as any fees associated with these restrictions.*
-	- No restrictions are placed on the dataset.
+	- No restrictions are placed on any of the datasets used or created for this report.
 6. *Do any export controls or other regulatory restrictions apply to the dataset or to individual instances? If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any supporting documentation.*
 	- None.
 7. *Any other comments?*
@@ -344,19 +461,19 @@ Extract of questions from @gebru2021.
 **Maintenance**
 
 1. *Who will be supporting/hosting/maintaining the dataset?*
-	- Tian Yi Zhang is hosting the dataset on the github link at https://github.com/zhan7818/bdo_monetization.
+	- Justin Abando will host, maintain, and support the dataset at https://github.com/justabando/malanalysis.
 2. *How can the owner/curator/manager of the dataset be contacted (for example, email address)?*
-	- The creator of the datasets, Tian Yi Zhang, can be contacted at tianyi.zhang6546@gmail.com.
+	- The original creator of the dataset, Andreu Vall Hernandez, can be contacted at andreu.vallhernandez@gmail.com. The author of this paper, Justin Abando, can be contacted at justin.abando2@gmail.com.
 3. *Is there an erratum? If so, please provide a link or other access point.*
-	- As of writing this datasheet, no explicit erratum have been spotted.
+	- N/A
 4. *Will the dataset be updated (for example, to correct labeling errors, add new instances, delete instances)? If so, please describe how often, by whom, and how updates will be communicated to dataset consumers (for example, mailing list, GitHub)?*
-	- Any updates will be posted on the github page used to host this paper which include the datasets.
+	- Any updates will be posted on the GitHub repo used to host this paper which include the datasets.
 5. *If the dataset relates to people, are there applicable limits on the retention of the data associated with the instances (for example, were the individuals in question told that their data would be retained for a fixed period of time and then deleted)? If so, please describe these limits and explain how they will be enforced.*
 	- N/A.
 6. *Will older versions of the dataset continue to be supported/hosted/maintained? If so, please describe how. If not, please describe how its obsolescence will be communicated to dataset consumers.*
-	- Older versions of the datasets (if there will be any) will be kept as a record on github.
+	- Older versions of the datasets will be available on the GitHub repo.
 7. *If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so? If so, please provide a description. Will these contributions be validated/verified? If so, please describe how. If not, why not? Is there a process for communicating/distributing these contributions to dataset consumers? If so, please provide a description.*
-	- One should contact Tian Yi Zhang, the author of the dataset.
+	- Anyone that wants to contribute to the original dataset should contact Andreu Vall Hernandez at andreu.vallhernandez@gmail.com.
 8. *Any other comments?*
 	- None.
 

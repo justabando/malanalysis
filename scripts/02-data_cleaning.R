@@ -1,8 +1,8 @@
 #### Preamble ####
-# Purpose: Cleans the anime.csv to be analyzed
+# Purpose: Cleans the anime.csv file to be analyzed
 # Author: Justin Abando
 # Data: 18 April 2023
-# Contact: justin.abando@utoronto.ca 
+# Contact: justin.abando@gmail.com
 # License: MIT
 
 
@@ -30,8 +30,7 @@ cleaned_anime <-
     members,
     episodes,
     source,
-    start_year,
-    studios
+    start_year
   )
 
 cleaned_anime$type |> #Finding unique types of observations to see if there are any issues to be cleaned
@@ -43,12 +42,8 @@ cleaned_anime$source |>
 cleaned_anime$start_year |>
   unique()
 
-cleaned_anime$studios |>
-  unique()
-
-cleaned_anime1 <- #Removing unneeded parentheses and underscores under strings
+cleaned_anime1 <- #Removing unneeded underscores under strings
   cleaned_anime |>
-  mutate(studios = str_replace_all(studios, "[\\[\\]']", "")) |>
   mutate(source = str_replace_all(source, "_", " "))
 
 cleaned_anime2 <- #Creating a subset of anime without NA values
@@ -63,7 +58,7 @@ anime_user_summary <- #Used to visualize summary of anime from user stats
 anime_information_summary <- #Used to visualize summary of an anime's information
   cleaned_anime1 |>
   slice_head(n = 10) |>
-  select(title, type, episodes, source, start_year, studios)
+  select(title, type, episodes, source, start_year)
 
 #### Save data ####
 write.csv(cleaned_anime1, "cleaned_anime1.csv")

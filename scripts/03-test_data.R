@@ -2,7 +2,7 @@
 # Purpose: Tests the simulated dataset to ensure that initial analyses work.
 # Author: Justin Abando
 # Data: 18 April 2023
-# Contact: justin.abando@mail.utoronto.ca
+# Contact: justin.abando@gmail.com
 # License: MIT
 
 
@@ -42,9 +42,3 @@ simulated_anime$source |> #Testing if there are only 5 options
 
 simulated_anime$start_year |> #Testing if variable is numeric
   class()
-
-simulated_anime$studios |> #Testing if variable is a factor
-  class()
-
-simulated_anime$studios |> #Testing if there are only 4 options
-  unique()

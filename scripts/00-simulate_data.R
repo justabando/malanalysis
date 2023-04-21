@@ -2,7 +2,7 @@
 # Purpose: Simulates the desired data set of an anime catalogue
 # Author: Justin Abando
 # Date: 18 April 2023
-# Contact: justin.abando@mail.utoronto.ca
+# Contact: justin.abando@gmail.com
 # License: MIT
 
 
@@ -26,6 +26,5 @@ simulated_anime <- tibble(
   type = factor(sample(c("TV", "Movie", "OVA"), n, replace = TRUE)), #Assigning different show types
   episodes = sample(1:100, n, replace = TRUE), #Choosing random episode counts from 1 to 100
   source = factor(sample(c("Manga", "Light Novel", "Original", "Visual Novel"), n, replace = TRUE)), #Assigning the source of the material
-  start_year = sample(1975:2022, n, replace = TRUE), #Randomizing the start year of the anime
-  studios = factor(sample(c("Studio A", "Studio B", "Studio C", "Studio D"), n, replace = TRUE)) #Randomizing studio that worked on the show
+  start_year = sample(1975:2022, n, replace = TRUE) #Randomizing the start year of the anime
 )
