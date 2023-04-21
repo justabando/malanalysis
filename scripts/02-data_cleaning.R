@@ -2,7 +2,7 @@
 # Purpose: Cleans the anime.csv file to be analyzed
 # Author: Justin Abando
 # Data: 18 April 2023
-# Contact: justin.abando@gmail.com
+# Contact: justin.abando2@gmail.com
 # License: MIT
 
 
